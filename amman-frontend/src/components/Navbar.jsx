@@ -19,6 +19,8 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
+        { name: 'Gallery', path: '/gallery' },
+        { name: 'About', path: '/about' },
         { name: 'Book Now', path: '/book' },
         { name: 'Contact', path: '/contact' },
     ];
@@ -49,8 +51,8 @@ const Navbar = () => {
                                 key={link.path}
                                 to={link.path}
                                 className={`relative text-base font-medium transition-colors duration-300 ${location.pathname === link.path
-                                        ? 'text-brand-orange'
-                                        : 'text-brand-white hover:text-brand-orange'
+                                    ? 'text-brand-orange'
+                                    : 'text-brand-white hover:text-brand-orange'
                                     }`}
                             >
                                 {link.name}
@@ -91,8 +93,8 @@ const Navbar = () => {
                                     to={link.path}
                                     onClick={() => setIsOpen(false)}
                                     className={`block text-lg font-medium transition-colors duration-300 ${location.pathname === link.path
-                                            ? 'text-brand-orange'
-                                            : 'text-brand-white hover:text-brand-orange'
+                                        ? 'text-brand-orange'
+                                        : 'text-brand-white hover:text-brand-orange'
                                         }`}
                                 >
                                     {link.name}

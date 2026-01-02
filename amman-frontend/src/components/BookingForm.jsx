@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { submitBooking } from '../utils/api';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 
 const BookingForm = () => {
+    const location = useLocation();
+    const preSelectedService = location.state?.selectedService || '';
+
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        service: '',
+        service: preSelectedService,
         location: '',
         date: '',
         message: '',
@@ -17,14 +21,17 @@ const BookingForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const services = [
-        'Excavator',
-        'Bulldozer',
-        'Dump Truck',
-        'Crane',
-        'Loader',
-        'Compactor',
-        'Grader',
-        'Backhoe',
+        'Excavator 140',
+        'Excavator 210',
+        'Backhoe Loader',
+        'Skid Steer Loader',
+        'Dozer',
+        'Soil Compactor',
+        'Mini Roller',
+        'Double Drum Roller',
+        'Open Taurus',
+        'Tractor',
+        'Tipper',
     ];
 
     const handleChange = (e) => {
@@ -182,8 +189,8 @@ const BookingForm = () => {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className={`flex items-center space-x-2 p-4 rounded-lg ${status.type === 'success'
-                                ? 'bg-green-500/20 text-green-400'
-                                : 'bg-red-500/20 text-red-400'
+                            ? 'bg-green-500/20 text-green-400'
+                            : 'bg-red-500/20 text-red-400'
                             }`}
                     >
                         {status.type === 'success' ? (
